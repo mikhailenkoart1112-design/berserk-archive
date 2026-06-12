@@ -1,65 +1,117 @@
+"use client";
+
 import Image from "next/image";
+import Link from "next/link";
+
+import Header from "@/components/Header";
+import { useLanguage } from "@/components/LanguageProvider";
+import AshParticles from "@/components/AshParticles";
+import SmokeLayer from "@/components/SmokeLayer";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+
+const text = {
+  en: {
+    archive: "BERSERK ARCHIVE",
+    title: "THE BLACK SWORDSMAN",
+    description:
+      "Explore the world of Berserk, its characters, kingdoms, battles and history.",
+    button: "ENTER THE WORLD",
+  },
+  ua: {
+    archive: "АРХІВ BERSERK",
+    title: "ЧОРНИЙ МЕЧНИК",
+    description:
+      "Досліджуй світ Berserk, його персонажів, королівства, битви та історію.",
+    button: "УВІЙТИ У СВІТ",
+  },
+  de: {
+    archive: "BERSERK ARCHIV",
+    title: "DER SCHWARZE SCHWERTKÄMPFER",
+    description:
+      "Erkunde die Welt von Berserk, ihre Charaktere, Königreiche, Schlachten und Geschichte.",
+    button: "DIE WELT BETRETEN",
+  },
+};
 
 export default function Home() {
+  const { language } = useLanguage();
+  const t = text[language];
+  const router = useRouter();
+const [clicks, setClicks] = useState(0);
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
+    <main className="min-h-screen bg-black text-white">
+      <Header />
+
+      <section className="relative flex min-h-screen items-center justify-center overflow-hidden px-5 pt-24">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,#220000_0%,#050000_45%,#000_100%)]" />
+
+        <SmokeLayer />
+        <AshParticles />
+
         <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+          src="/images/brand.png"
+          alt="Brand Of Sacrifice"
+          width={900}
+          height={900}
+          className="pointer-events-none absolute left-1/2 top-[57%] w-[620px] -translate-x-1/2 -translate-y-1/2 opacity-[0.09] mix-blend-screen md:w-[900px]"
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+
+       <div className="absolute left-1/2 top-10 -translate-x-1/2 md:top-8">
+  <div className="absolute left-1/2 top-10 -translate-x-1/2 md:top-8">
+  <div className="relative h-44 w-44 md:h-60 md:w-60">
+    <div className="absolute left-1/2 top-10 -translate-x-1/2 md:top-8">
+  <button
+    type="button"
+    onClick={() => {
+      const next = clicks + 1;
+
+      if (next >= 5) {
+        router.push("/eclipse");
+      }
+
+      setClicks(next);
+    }}
+    className="relative h-44 w-44 md:h-60 md:w-60"
+  >
+    <Image
+      src="/images/behelit.png?v=2"
+      alt="Behelit"
+      fill
+      priority
+      unoptimized
+      className="behelit-float object-contain drop-shadow-[0_0_55px_rgba(255,0,0,0.8)]"
+    />
+  </button>
+</div>
+  </div>
+</div>
+</div>
+
+        <div className="absolute inset-x-0 bottom-0 h-72 bg-gradient-to-t from-black via-black/80 to-transparent" />
+
+        <div className="relative z-10 mt-40 text-center md:mt-48">
+          <p className="mb-5 text-xs uppercase tracking-[0.55em] text-red-600 md:text-sm">
+            {t.archive}
           </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+
+          <h1 className="mb-6 text-5xl font-black uppercase leading-none tracking-tight text-white drop-shadow-[0_0_35px_rgba(255,0,0,0.18)] md:text-8xl">
+            {t.title}
+          </h1>
+
+          <p className="mx-auto max-w-2xl text-base leading-8 text-zinc-300 md:text-lg">
+            {t.description}
+          </p>
+
+          <Link
+            href="/enter"
+            className="mt-10 inline-block rounded-2xl border border-red-800/80 bg-black/40 px-8 py-4 text-sm font-bold uppercase tracking-[0.35em] text-white shadow-[0_0_35px_rgba(120,0,0,0.35)] transition hover:bg-red-950"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+            {t.button}
+          </Link>
         </div>
-      </main>
-    </div>
+      </section>
+    </main>
   );
 }
