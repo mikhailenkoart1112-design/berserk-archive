@@ -108,7 +108,7 @@ body {
   transform:
     translate(-50%, -50%)
     rotate(var(--angle))
-    translateY(-220px)
+    translateY(-155px)
     rotate(calc(-1 * var(--angle)));
 }
 

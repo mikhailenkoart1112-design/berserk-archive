@@ -61,7 +61,7 @@ export default function EnterPage() {
         <PageBackground />
 
         <div className="relative z-10 flex h-[760px] w-full max-w-[520px] items-center justify-center md:h-[820px] md:max-w-[900px]">
-          <div className="absolute h-[260px] w-[260px] rounded-full border border-red-900/70 bg-black/80 shadow-[0_0_100px_rgba(150,0,0,0.45)] md:h-[360px] md:w-[360px]" />
+          <div className="absolute h-[220px] w-[220px] rounded-full border border-red-900/70 bg-black/80 shadow-[0_0_100px_rgba(150,0,0,0.45)] md:h-[360px] md:w-[360px]" />
 
           <div className="relative z-20 text-center">
             <div className="relative mx-auto mb-5 h-40 w-40 overflow-hidden rounded-full border border-red-900 bg-black shadow-[0_0_80px_rgba(120,0,0,0.5)] md:h-52 md:w-52">
