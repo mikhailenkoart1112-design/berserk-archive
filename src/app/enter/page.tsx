@@ -21,7 +21,6 @@ const text = {
       ["Gallery", "/gallery"],
     ],
   },
-
   ua: {
     center: "БОРОТЬБА З ДОЛЕЮ",
     sections: [
@@ -35,7 +34,6 @@ const text = {
       ["Галерея", "/gallery"],
     ],
   },
-
   de: {
     center: "DER KÄMPFER",
     sections: [
@@ -62,7 +60,7 @@ export default function EnterPage() {
       <section className="relative flex min-h-screen items-center justify-center overflow-hidden px-5 pt-24">
         <PageBackground />
 
-        <div className="relative z-10 flex min-h-[820px] w-full max-w-[820px] items-center justify-center md:h-[780px]">
+        <div className="relative z-10 flex h-[760px] w-full max-w-[520px] items-center justify-center md:h-[820px] md:max-w-[900px]">
           <div className="absolute h-[260px] w-[260px] rounded-full border border-red-900/70 bg-black/80 shadow-[0_0_100px_rgba(150,0,0,0.45)] md:h-[360px] md:w-[360px]" />
 
           <div className="relative z-20 text-center">
